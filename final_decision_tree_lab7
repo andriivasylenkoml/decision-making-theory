@@ -1,0 +1,26 @@
+// Фінальне дерево рішень для звіту
+digraph {
+	rankdir=LR ranksep=1.2 size="10,6"
+	D1 [label="[1] Прийняття рішення
+Видача позики" shape=square xlabel=1617]
+	A_res1 [label="20130 грн" shape=circle]
+	A_res2 [label="0 грн" shape=circle]
+	B_res1 [label="17985 грн" shape=circle]
+	subgraph cluster_A {
+		style=invis
+		A_label [label=1617 shape=plaintext]
+		A [label=A shape=circle]
+		A_label -> A [style=invis]
+	}
+	subgraph cluster_B {
+		style=invis
+		B_label [label=1485 shape=plaintext]
+		B [label=B shape=circle]
+		B_label -> B [style=invis]
+	}
+	D1 -> A [label="Давати позику під 22%" style="dashed,bold" xlabel="(-16500 грн)"]
+	D1 -> B [label="// Інвестувати під 9%" color=red style=dashed xlabel="❌"]
+	A -> A_res1 [label="Повернуть (0.9)" style=bold]
+	A -> A_res2 [label="Не повернуть (0.1)"]
+	B -> B_res1 [label="Інвестувати (1.0)" style=dashed]
+}
